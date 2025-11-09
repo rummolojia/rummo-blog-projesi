@@ -76,9 +76,8 @@ html {
 /* ---------------------------------------------------- */
 
 /* Mouse Tilt Efekti, transform'u JS'ten alır. Biz sadece box-shadow'u ekliyoruz. */
-.w-full {
-    transition: all 0.3s ease-in-out;
-}
+/*.w-full {
+    /*transition: all 0.3s ease-in-out;}*/
 
 /* Kırmızı (Red) kartlar için varsayılan ve Red butonu hedefleme */
 .w-full:hover,
