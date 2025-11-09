@@ -2,3 +2,22 @@
 html {
     scroll-behavior: smooth;
 }
+
+/* style.css dosyasına ekle */
+@keyframes fadeInUp {
+    from {
+        opacity: 0; /* Başlangıçta görünmez (şeffaf) */
+        transform: translate3d(0, 40px, 0); /* 40 piksel aşağıda başla */
+    }
+    to {
+        opacity: 1; /* Sona doğru tamamen görünür ol */
+        transform: translate3d(0, 0, 0); /* Orijinal yerine kay */
+    }
+}
+
+.animate-fade-in-up {
+    animation-name: fadeInUp; /* Yukarıda tanımladığımız animasyon adını kullan */
+    animation-duration: 0.8s; /* Animasyonun 0.8 saniye sürmesini sağla */
+    animation-fill-mode: both; /* Animasyon bitince son durumda kal */
+    opacity: 0; /* Varsayılan olarak görünmez kalsın (HTML'de) */
+}
