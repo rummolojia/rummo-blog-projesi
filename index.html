@@ -8,6 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>R</text></svg>">
+
+<meta property="og:title" content="Rummo Blog | UI/UX & Kodlama Notları">
+<meta property="og:description" content="Gelişen teknolojileri, trendleri ve kodlama ipuçlarını tek bir yerden takip edin.">
+<meta property="og:image" content="https://storage.googleapis.com/gweb-media/styled-images/rummo_blog_konsept_glitch.jpg">
+<meta property="og:url" content="https://rummolojia-dev.netlify.app/">
     
     <script>
         tailwind.config = {
@@ -27,6 +34,20 @@
 </head>
 
 <body class="bg-gray-900 text-gray-200">
+
+    <div id="mobile-menu" class="fixed inset-0 bg-gray-900 z-50 transform -translate-x-full transition-transform duration-300 md:hidden">
+    <div class="p-4 flex justify-end">
+        <button id="close-menu" class="p-2 text-white hover:text-red-500">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+    <nav class="flex flex-col items-center space-y-8 text-2xl mt-12">
+        <a href="#" class="glitch-link text-white hover:text-red-500 font-medium" data-text="Anasayfa">Anasayfa</a>
+        <a href="#" class="glitch-link text-white hover:text-red-500 font-medium" data-text="Blog">Blog</a>
+        <a href="#" class="glitch-link text-white hover:text-red-500 font-medium" data-text="Hakkında">Hakkında</a>
+        <a href="#" class="text-white py-3 px-8 bg-blue-600 rounded-lg hover:bg-blue-700 transition duration-300 shadow-xl w-60 text-center">İletişim</a>
+    </nav>
+</div>
     
     <header class="bg-gray-800 shadow-xl p-4 flex justify-between items-center sticky top-0 z-10">
     
@@ -112,5 +133,30 @@
     <footer class="bg-gray-900 border-t border-gray-800 p-6 text-center text-gray-500">
         <p>&copy; 2025 Rummo Blog. Tüm Hakları Saklıdır. | rummolojia UI/UX Engineer</p>
     </footer>
+
+
+<script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeButton = document.getElementById('close-menu');
+
+    // Hamburger menüye tıklandığında menüyü aç (header içindeki butonu seçiyoruz)
+    document.querySelector('header button.md\\:hidden').addEventListener('click', () => {
+        mobileMenu.classList.remove('-translate-x-full');
+    });
+
+    // Kapatma düğmesine tıklandığında menüyü kapat
+    closeButton.addEventListener('click', () => {
+        mobileMenu.classList.add('-translate-x-full');
+    });
+
+    // Mobile menu içindeki linklere tıklandığında menüyü kapat
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('-translate-x-full');
+        });
+    });
+</script>
+
+
 </body>
 </html>
