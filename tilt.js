@@ -1,3 +1,8 @@
+// tilt.js dosyanızın en üst satırı
+console.log("RUMMO: Tilt Efekti JS Başarıyla Yüklendi ve Çalışıyor! (V5.6)");
+// ... Diğer tüm kodunuz bu satırdan sonra devam etmeli    
+    
+    
     // Mobil Menü JS Kodu
     const mobileMenu = document.getElementById('mobile-menu');
     const closeButton = document.getElementById('close-menu');
