@@ -1,84 +1,76 @@
-/* style.css dosyasına sadece bunu ekleyin */
+/* Genel Ayarlar */
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Sayfada yumuşak kaydırma */
 }
 
-/* style.css dosyasına ekle */
+/* ---------------------------------------------------- */
+/* 1. Hero Section (Aşağıdan Kayarak Belirme) Animasyonu */
+/* ---------------------------------------------------- */
+
 @keyframes fadeInUp {
     from {
-        opacity: 0; /* Başlangıçta görünmez (şeffaf) */
+        opacity: 0;
         transform: translate3d(0, 40px, 0); /* 40 piksel aşağıda başla */
     }
     to {
-        opacity: 1; /* Sona doğru tamamen görünür ol */
+        opacity: 1;
         transform: translate3d(0, 0, 0); /* Orijinal yerine kay */
     }
 }
 
 .animate-fade-in-up {
-    animation-name: fadeInUp; /* Yukarıda tanımladığımız animasyon adını kullan */
-    animation-duration: 0.8s; /* Animasyonun 0.8 saniye sürmesini sağla */
-    animation-fill-mode: both; /* Animasyon bitince son durumda kal */
-    opacity: 0; /* Varsayılan olarak görünmez kalsın (HTML'de) */
+    animation-name: fadeInUp;
+    animation-duration: 0.8s;
+    animation-fill-mode: both;
+    opacity: 0;
 }
 
 
-/* --- Glitch Hover Efekti için Yeni CSS --- */
+/* ---------------------------------------------------- */
+/* 2. Holografik Hover (Glitch'siz, Sadece Parlama) Efekti */
+/* ---------------------------------------------------- */
 
-/* 1. Temel Stil: Üzerine gelince metni gizler ve pozisyonu ayarlar */
 .glitch-link {
     position: relative;
     display: inline-block;
     color: #1f2937; /* Varsayılan koyu renk */
-    transition: color 0.3s;
+    transition: color 0.3s; /* Renk geçişini yumuşat */
 }
 
-/* 2. Üzerine Gelince Ana Metnin Rengi */
+/* Üzerine Gelince Ana Metnin Rengi */
 .glitch-link:hover {
-    color: #ef4444; /* Fare gelince kırmızı (veya istediğiniz renk) */
+    color: #1e3a8a; /* Fare gelince koyu mavi (daha profesyonel) */
 }
 
-/* 3. Sahte Elementler Oluşturma (Glitch Etkisinin Temeli) */
+/* Sahte Elementler Oluşturma */
 .glitch-link::before,
 .glitch-link::after {
-    content: attr(data-text); /* HTML'deki 'data-text' özelliğini kopyala */
+    content: attr(data-text);
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     transition: opacity 0.3s;
+    opacity: 0; /* Varsayılan olarak görünmez */
 }
 
-/* 4. ::before (İlk Kopya) - Kırmızı Kanal */
+/* ::before (Kırmızı Kanal) - 1px Kaydırma */
 .glitch-link::before {
-    left: 2px; /* Biraz sağa kaydır */
-    text-shadow: -1px 0 red; /* Kırmızı gölge ekle */
+    left: 1px;
+    text-shadow: -1px 0 red;
     clip-path: inset(0 50% 0 0); /* Metnin yarısını göster */
-    opacity: 0;
 }
 
-/* 5. ::after (İkinci Kopya) - Mavi Kanal */
+/* ::after (Mavi Kanal) - 1px Kaydırma */
 .glitch-link::after {
-    left: -2px; /* Biraz sola kaydır */
-    text-shadow: 1px 0 blue; /* Mavi gölge ekle */
+    left: -1px;
+    text-shadow: 1px 0 blue;
     clip-path: inset(0 0 0 50%); /* Metnin diğer yarısını göster */
-    opacity: 0;
 }
 
-/* 6. Hover Durumu: Efekti Görünür Yapma */
+/* Hover Durumu: Efekti Görünür Yapma (Titreme yok, sadece parlatma) */
 .glitch-link:hover::before,
 .glitch-link:hover::after {
     opacity: 1;
-    animation: glitch 0.5s 1; /* Animasyonu 0.5 saniye çalıştır ve bitir (tek atım) */
-}
-
-/* 7. Glitch Animasyon Kuralı (Metinleri rastgele kaydırma) */
-@keyframes glitch {
-    0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0); }
+    /* Glitch titreşimi artık yok. Sadece yumuşak bir parlama kalıyor. */
 }
