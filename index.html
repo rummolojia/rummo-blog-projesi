@@ -157,21 +157,9 @@
     // 2. KART OLUŞTURMA: ANIMASYON, 3D EFKET VE POST.HTML LİNKİ
     // -------------------------------------------------------------------------------------
     blogPosts.forEach((post, index) => { 
-
-        // 3. Tıklama Olayı: Kart başlığını kaydetme
-    document.querySelectorAll('#kartlar a').forEach(link => {
-    link.addEventListener('click', (e) => {
-        // Tıklanan linkin üstündeki h2 başlığını bul
-        const cardTitle = link.closest('.w-full').querySelector('h2').textContent.replace('BLOG: ', '').trim();
-        
-        // Başlığı geçici olarak kaydet
-        localStorage.setItem('currentPostTitle', cardTitle);
-        });
-        });
         
         const delay = index * 0.15; // Gecikme süresi hesaplandı (0.15s aralıklarla)
         
-        // **ÖNEMLİ:** Buradaki tırnaklar `backtick` tırnağıdır (`)
         const cardHTML = `
             <div 
                 class="w-full sm:w-1/2 lg:w-1/4 p-6 rounded-lg flex flex-col gap-4 bg-gray-800 text-white 
@@ -206,6 +194,20 @@
         // Oluşturulan kart HTML'ini kapsayıcıya ekle
         kartlarContainer.innerHTML += cardHTML;
     });
+
+    // -------------------------------------------------------------------------------------
+    // 3. TIKLAMA OLAYI (Kartlar oluştuktan sonra eklenmeli - Düzeltildi)
+    // -------------------------------------------------------------------------------------
+    document.querySelectorAll('#kartlar a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Tıklanan linkin üstündeki h2 başlığını bul (en yakın .w-full kapsayıcısını arar)
+            const cardTitle = link.closest('.w-full').querySelector('h2').textContent.replace('BLOG: ', '').trim();
+            
+            // Başlığı geçici olarak kaydet
+            localStorage.setItem('currentPostTitle', cardTitle);
+        });
+    });
+
 </script>
 </body>
 </html>
