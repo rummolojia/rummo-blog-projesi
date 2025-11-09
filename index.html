@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rummo Blog Kartları</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+/* Kullanıcı deneyimini iyileştirmek için eklendi */
+
+<body class="bg-gray-100">
+
+    <header class="bg-white shadow-md p-4 flex justify-between items-center">
+    
+    <a href="#" class="text-2xl font-bold text-gray-900">
+        Rummo Blog
+    </a>
+
+    <nav class="hidden md:flex space-x-6">
+        <a href="#" class="text-gray-600 hover:text-blue-600 font-medium">Anasayfa</a>
+        <a href="#" class="text-gray-600 hover:text-blue-600 font-medium">Blog</a>
+        <a href="#" class="text-gray-600 hover:text-blue-600 font-medium">Hakkında</a>
+        <a href="#" class="text-white py-2 px-4 bg-blue-600 rounded-lg hover:bg-blue-700 transition">İletişim</a>
+    </nav>
+    
+    <button class="md:hidden p-2 text-gray-600 hover:text-blue-600">
+
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+    </svg>
+        
+    </button>
+</header>
+
+
+    <section class="bg-white py-16 px-8 sm:py-24 text-center">
+    <div class="max-w-4xl mx-auto"> 
+        
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight">
+            Rummo Blog'a Hoş Geldiniz. <span class="text-blue-600">Öğrenme</span> Yolculuğunuz Başlasın.
+        </h1>
+        
+        <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+            Gelişen teknolojileri, trendleri ve kodlama ipuçlarını tek bir yerden takip edin. Bilgi dolu yazılarımızla her gün kendinizi geliştirin.
+        </p>
+
+        <a href="#kartlar" class="inline-block py-3 px-8 text-lg bg-red-600 text-white font-semibold rounded-full shadow-lg hover:bg-red-700 transition duration-300">
+            Hemen Blog Yazılarını Keşfet
+        </a>
+
+    </div>
+</section>
+
+    
+    <div id="kartlar" class="flex flex-wrap justify-center gap-8 p-8 min-h-screen">
+        
+        <div class="w-full sm:w-1/2 md:max-w-xs lg:w-1/4 bg-white p-6 shadow-xl rounded-3xl flex flex-col gap-4">
+            <div class="h-40 bg-gray-300 rounded-xl"></div>
+            <div class="flex flex-col gap-2">
+                <h2 class="text-xl font-bold">KART 1: ANA BAŞLIK</h2>
+                <p class="text-gray-600 text-sm">
+                    Bu ilk kartımız. Responsive tasarıma geçiyoruz!
+                </p>
+            </div>
+            <button class="w-full py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition duration-300">
+                GÖRÜNTÜLE
+            </button>
+        </div>
+        <div class="w-full sm:w-1/2 md:max-w-xs lg:w-1/4 bg-white p-6 shadow-xl rounded-3xl flex flex-col gap-4">
+            <div class="h-40 bg-gray-300 rounded-xl"></div>
+            <div class="flex flex-col gap-2">
+                <h2 class="text-xl font-bold">KART 2: YENİ BÖLÜM</h2>
+                <p class="text-gray-600 text-sm">
+                    İç içe flexbox mantığını tamamen anladık.
+                </p>
+            </div>
+            <button class="w-full py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition duration-300">
+                DEVAM
+            </button>
+        </div>
+        <div class="w-full sm:w-1/2 md:max-w-xs lg:w-1/4 bg-white p-6 shadow-xl rounded-3xl flex flex-col gap-4">
+            <div class="h-40 bg-gray-300 rounded-xl"></div>
+            <div class="flex flex-col gap-2">
+                <h2 class="text-xl font-bold">KART 3: SON ADIM</h2>
+                <p class="text-gray-600 text-sm">
+                    Bu, Hafta 2'de yapacağınız ilk büyük adımdır!
+                </p>
+            </div>
+            <button class="w-full py-3 bg-red-600 text-white rounded-xl font-medium hover:bg-red-700 transition duration-300">
+                BAŞARILI
+            </button>
+        </div>
+        </div>
+</body>
+</html>
