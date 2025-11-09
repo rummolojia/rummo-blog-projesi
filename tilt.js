@@ -1,20 +1,26 @@
-// tilt.js dosyanızın en üst satırı
-console.log("RUMMO: Tilt Efekti JS Başarıyla Yüklendi ve Çalışıyor! (V5.6)");
-// ... Diğer tüm kodunuz bu satırdan sonra devam etmeli    
-    
-    
-    // Mobil Menü JS Kodu
+// tilt.js
+// DİKKAT: Bu dosya içinde <script> etiketleri KULLANILMAMALIDIR.
+
+// Sayfa içeriği tamamen yüklendikten sonra çalışmayı garanti eder.
+document.addEventListener("DOMContentLoaded", function() {
+
+    // -------------------------------------------------------------------------------------
+    // 1. MOBİL MENÜ JS KODU
+    // -------------------------------------------------------------------------------------
     const mobileMenu = document.getElementById('mobile-menu');
     const closeButton = document.getElementById('close-menu');
 
+    // Açma butonu için
     document.querySelector('header button.md\\:hidden').addEventListener('click', () => {
         mobileMenu.classList.remove('-translate-x-full');
     });
 
+    // Kapatma butonu için
     closeButton.addEventListener('click', () => {
         mobileMenu.classList.add('-translate-x-full');
     });
     
+    // Linklere tıklayınca menüyü kapat
     document.querySelectorAll('#mobile-menu a').forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('-translate-x-full');
@@ -22,7 +28,7 @@ console.log("RUMMO: Tilt Efekti JS Başarıyla Yüklendi ve Çalışıyor! (V5.6
     });
 
     // -------------------------------------------------------------------------------------
-    // 1. VERİ KAYNAĞI: 4 KARTLI BLOG POSTS DİZİSİ
+    // 2. VERİ KAYNAĞI ve KART OLUŞTURMA
     // -------------------------------------------------------------------------------------
     const blogPosts = [
         {
@@ -57,12 +63,10 @@ console.log("RUMMO: Tilt Efekti JS Başarıyla Yüklendi ve Çalışıyor! (V5.6
 
     const kartlarContainer = document.getElementById('kartlar');
 
-    // -------------------------------------------------------------------------------------
-    // 2. KART OLUŞTURMA: ANIMASYON, 3D EFKET VE POST.HTML LİNKİ
-    // -------------------------------------------------------------------------------------
+    // Kartları oluştur
     blogPosts.forEach((post, index) => { 
         
-        const delay = index * 0.15; // Gecikme süresi hesaplandı (0.15s aralıklarla)
+        const delay = index * 0.15; // Animasyon gecikmesi
         
         const cardHTML = `
             <div 
@@ -111,8 +115,9 @@ console.log("RUMMO: Tilt Efekti JS Başarıyla Yüklendi ve Çalışıyor! (V5.6
     });
 
     // -------------------------------------------------------------------------------------
-    // 4. GELİŞMİŞ EFEKT: MOUSE TAKİPLİ 3D TILT (NİHAİ DÜZELTME)
+    // 4. GELİŞMİŞ EFEKT: MOUSE TAKİPLİ 3D TILT
     // -------------------------------------------------------------------------------------
+    // Yeni oluşturulan kartları seç ve her birine olay dinleyicisi ekle
     document.querySelectorAll('#kartlar .w-full').forEach(card => {
         
         // Mouse kartın üzerine girdiğinde olay dinleyicisini tanımla
@@ -123,18 +128,18 @@ console.log("RUMMO: Tilt Efekti JS Başarıyla Yüklendi ve Çalışıyor! (V5.6
 
             const rect = card.getBoundingClientRect();
             
-            // 2. Mouse'un kart içindeki X ve Y koordinatlarını hesapla
+            // Mouse'un kart içindeki X ve Y koordinatlarını hesapla
             const x = e.clientX - rect.left; 
             const y = e.clientY - rect.top; 
             
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            // 3. Mouse'un merkeze olan uzaklığını ve açısını hesapla
-            const rotateY = (x - centerX) / centerX * 6; // Max 6 derece Y ekseninde döndür
-            const rotateX = (centerY - y) / centerY * 6; // Max 6 derece X ekseninde döndür
+            // Mouse'un merkeze olan uzaklığını ve açısını hesapla (Max 6 derece eğim)
+            const rotateY = (x - centerX) / centerX * 6; 
+            const rotateX = (centerY - y) / centerY * 6; 
 
-            // 4. CSS Transform stilini uygula (3D perspektif korunarak)
+            // CSS Transform stilini uygula
             card.style.transform = `
                 perspective(1000px) 
                 scale(1.03) /* Hafifçe büyüt */
@@ -144,16 +149,11 @@ console.log("RUMMO: Tilt Efekti JS Başarıyla Yüklendi ve Çalışıyor! (V5.6
             `;
         });
 
-        // Mouse karttan ayrıldığında eski haline döndür (ve Geri dönüş için yumuşak geçiş ekle)
+        // Mouse karttan ayrıldığında eski haline döndür (yumuşak geçişle)
         card.addEventListener('mouseleave', () => {
             card.style.transition = 'transform 0.5s ease'; // Geri dönüş yumuşak olsun
             card.style.transform = 'perspective(1000px) scale(1) rotateX(0) rotateY(0) translateZ(0)';
         });
-        
-        // Bu bloğa artık ihtiyacımız yok:
-        /*
-        card.addEventListener('mouseenter', () => {
-            card.style.transition = 'transform 0s'; 
-        });
-        */
     });
+
+}); // DOMContentLoaded sonu.
