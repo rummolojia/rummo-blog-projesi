@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Detay Sayfası | Rummo Blog</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>R</text></svg>">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css"> 
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script> 
+</head>
+
+<body class="bg-gray-900 text-gray-200">
+    
+    <header class="bg-gray-800 shadow-xl p-4 flex justify-between items-center sticky top-0 z-10">
+        <a href="index.html" class="text-2xl font-bold text-white">Rummo Blog</a>
+        <nav class="hidden md:flex space-x-6">
+            <a href="index.html" class="glitch-link text-gray-400 hover:text-red-500 font-medium" data-text="Anasayfa">Anasayfa</a>
+            <a href="#" class="glitch-link text-gray-400 hover:text-red-500 font-medium" data-text="Blog">Blog</a>
+            <a href="#" class="glitch-link text-gray-400 hover:text-red-500 font-medium" data-text="Hakkında">Hakkında</a>
+            <a href="#" class="text-white py-2 px-4 bg-blue-600 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md">İletişim</a>
+        </nav>
+        <button class="md:hidden p-2 text-gray-400 hover:text-red-500">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </header>
+    
+    <main class="max-w-4xl mx-auto p-8 min-h-screen">
+        <article class="prose prose-invert lg:prose-xl mx-auto py-10">
+            
+            <a href="index.html" class="text-blue-400 hover:text-red-500 transition duration-200 block mb-8">← Anasayfaya Geri Dön</a>
+            
+            <img src="https://source.unsplash.com/random/800x450/?abstract,data,dark" alt="Blog Yazısı Görseli" class="w-full h-96 object-cover rounded-xl shadow-xl mb-8">
+            
+            <h1 class="text-5xl font-extrabold text-white mb-4">Gelişmiş Kart Animasyonları ve 3D Efektler</h1>
+            <p class="text-gray-400 mb-8">Yazan: rummolojia | 09 Kasım 2025</p>
+
+            <p>
+                Bu sayfada, ana sayfada gördüğümüz kartların dinamik olarak nasıl oluşturulduğunu ve onlara sırayla giriş animasyonu (Staggered Load) ile 3D tilt efekti (mouse ile üzerine gelince hafif eğilme) nasıl eklendiğini detaylıca inceliyoruz.
+            </p>
+            
+            <h2 class="text-3xl font-bold mt-10 mb-4">Kodlama ve Animasyon Detayları</h2>
+            <p>
+                Gecikmeli animasyon için JavaScript'te `forEach` döngüsü içinde `index` değerini kullanarak her bir karta artan bir `animation-delay` değeri atadık. Böylece her kart bir öncekinden 0.15 saniye sonra ekrana geliyor.
+            </p>
+            
+            <h3 class="text-2xl font-semibold mt-8 mb-4">3D Tilt Etkisi</h3>
+            <p>
+                3D efekti ise kartın HTML'ine eklediğimiz CSS stilleri ile sağlanır:
+            </p>
+
+            <pre class="bg-gray-800 p-4 rounded-lg text-sm text-gray-200 overflow-x-auto"><code>
+.hover\\:rotate-x-2.hover\\:rotate-y-\\[-2deg\\] {
+    /* Basitleştirilmiş Tailwind kodları */
+    --tw-rotate-x: 2deg;
+    --tw-rotate-y: -2deg;
+    transform: perspective(1000px) rotateX(var(--tw-rotate-x)) rotateY(var(--tw-rotate-y));
+}
+                </code></pre>
+
+            <p>
+                Bu, kullanıcının kartın üzerine geldiğinde hafifçe eğildiğini ve daha derin olduğunu hissetmesini sağlar.
+            </p>
+        </article>
+    </main>
+
+    <footer class="bg-gray-900 border-t border-gray-800 p-6 text-center text-gray-500">
+        <p>&copy; 2025 Rummo Blog. Tüm Hakları Saklıdır. | rummolojia UI/UX Engineer</p>
+    </footer>
+
+    <script>
+        // Mobil Menü JS Kodu
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeButton = document.getElementById('close-menu');
+        
+        // index.html'den kopyaladığınız mobil menü kodlarını buraya yapıştırın
+        document.querySelector('header button.md\\:hidden').addEventListener('click', () => {
+            mobileMenu.classList.remove('-translate-x-full');
+        });
+
+        closeButton.addEventListener('click', () => {
+            mobileMenu.classList.add('-translate-x-full');
+        });
+        
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('-translate-x-full');
+            });
+        });
+        
+    </script>
+    
+</body>
+</html>
