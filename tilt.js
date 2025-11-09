@@ -1,5 +1,5 @@
 // tilt.js
-// NİHAİ ÇALIŞAN VERSİYON: DOMContentLoaded, setTimeout ve Z-0 Link Listener içerir.
+// NİHAİ TEMİZ VERSİYON: Sadece zorunlu JS fonksiyonlarını içerir.
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -9,14 +9,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const mobileMenu = document.getElementById('mobile-menu');
     const closeButton = document.getElementById('close-menu');
 
+    // Açma butonu
     document.querySelector('header button.md\\:hidden').addEventListener('click', () => {
         mobileMenu.classList.remove('-translate-x-full');
     });
 
+    // Kapatma butonu
     closeButton.addEventListener('click', () => {
         mobileMenu.classList.add('-translate-x-full');
     });
     
+    // Linklere tıklayınca menüyü kapat
     document.querySelectorAll('#mobile-menu a').forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('-translate-x-full');
@@ -24,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // -------------------------------------------------------------------------------------
-    // 2. VERİ KAYNAĞI ve KART OLUŞTURMA (3D Stilleri Burada Ekleniyor)
+    // 2. VERİ KAYNAĞI ve KART OLUŞTURMA
     // -------------------------------------------------------------------------------------
     const blogPosts = [
         { title: "Tailwind CSS ve 3D Tasarım", excerpt: "Sıfırdan modern bir koyu tema ve 3D derinlik algısı nasıl oluşturulur?", buttonText: "GÖRÜNTÜLE", color: "red", imageUrl: "https://source.unsplash.com/random/400x225/?dark,abstract" },
@@ -42,14 +45,14 @@ document.addEventListener("DOMContentLoaded", function() {
         const cardHTML = `
             <div 
                 class="w-full sm:w-1/2 lg:w-1/4 p-6 rounded-lg flex flex-col gap-4 bg-gray-800 text-white 
-                shadow-2xl relative" 
+                shadow-2xl relative
+                /* TILT ETKİSİ İÇİN TAILWIND SINIFLARI */
+                transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-2xl hover:z-20
+                " 
                 style="
                     animation: fadeInUp 0.5s ease-out forwards; 
                     opacity: 0; 
                     animation-delay: ${delay}s;
-                    /* 3D Görünüm İçin Gerekli Olanlar */
-                    transform-style: preserve-3d;
-                    transform: perspective(1000px);
                 "
             >
                 <a href="post.html" class="absolute inset-0 z-0 rounded-lg"></a> 
@@ -81,52 +84,5 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.setItem('currentPostTitle', cardTitle);
         });
     });
-
-    // -------------------------------------------------------------------------------------
-    // 4. GELİŞMİŞ EFEKT: MOUSE TAKİPLİ 3D TILT (Listener Z-0 linkine taşındı)
-    // -------------------------------------------------------------------------------------
-    
-    // Kodun çalışmasını 10ms geciktirerek kartların DOM'a kesinlikle yerleşmesini sağla
-    setTimeout(() => {
-        
-        document.querySelectorAll('#kartlar .w-full').forEach(card => {
-            
-            // Mouse olaylarını yakalaması gereken görünmez Z-0 linkini seç
-            const interactiveElement = card.querySelector('a.absolute.inset-0'); 
-            if (!interactiveElement) return; // Z-0 linki yoksa devam etme.
-
-            // Mouse hareketini asıl tıklanabilir elementten dinle
-            interactiveElement.addEventListener('mousemove', (e) => {
-                
-                // Tilt'i uyguladığımız card elementine müdahale et
-                card.style.transition = 'transform 0s'; 
-
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; 
-                const y = e.clientY - rect.top; 
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateY = (x - centerX) / centerX * 6; 
-                const rotateX = (centerY - y) / centerY * 6; 
-
-                card.style.transform = `
-                    perspective(1000px) 
-                    scale(1.03) 
-                    rotateX(${rotateX}deg) 
-                    rotateY(${rotateY}deg)
-                    translateZ(20px) 
-                `;
-            });
-
-            // Mouse karttan ayrıldığında eski haline döndür (mouseleave hala card'da dinlenmeli)
-            card.addEventListener('mouseleave', () => { 
-                card.style.transition = 'transform 0.5s ease'; 
-                card.style.transform = 'perspective(1000px) scale(1) rotateX(0) rotateY(0) translateZ(0)';
-            });
-        });
-
-    }, 10); // 10 milisaniye gecikme.
 
 }); // DOMContentLoaded sonu.

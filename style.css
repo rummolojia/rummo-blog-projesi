@@ -72,7 +72,7 @@ html {
 }
 
 /* ---------------------------------------------------- */
-/* 3. KARTLAR İÇİN NEON GÖLGE EFEKTİ (Manuel transition YOK) */
+/* 3. KARTLAR İÇİN NEON GÖLGE EFEKTİ (Tailwind'in Hover'ına eşlik eder) */
 /* ---------------------------------------------------- */
 
 /* Kırmızı (Red) kartlar için varsayılan Neon gölge */
