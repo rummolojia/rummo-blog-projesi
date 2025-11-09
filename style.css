@@ -1,4 +1,4 @@
-/* style.css (Nihai Düzeltilmiş Sürüm) */
+/* style.css (NİHAİ DÜZELTİLMİŞ SÜRÜM) */
 
 /* Genel Ayarlar */
 html {
@@ -72,14 +72,12 @@ html {
 }
 
 /* ---------------------------------------------------- */
-/* 3. KARTLAR İÇİN NEON GÖLGE VE 3D GEÇİŞ EFEKTİ */
+/* 3. KARTLAR İÇİN NEON GÖLGE EFEKTİ (TILT JS İLE ÇALIŞIR) */
 /* ---------------------------------------------------- */
 
-/* Mouse Tilt Efekti, transform'u JS'ten alır. Biz sadece box-shadow'u ekliyoruz. */
-/*.w-full {
-    /*transition: all 0.3s ease-in-out;}*/
+/* Tüm kartlar için geçerli olacak (Tilt JS'in geçişini bozmamak için burada 'transition' KULLANILMADI) */
 
-/* Kırmızı (Red) kartlar için varsayılan ve Red butonu hedefleme */
+/* Kırmızı (Red) kartlar için varsayılan Neon gölge */
 .w-full:hover,
 .w-full:hover [class*="bg-red-"] {
     box-shadow: 
