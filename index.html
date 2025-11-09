@@ -23,7 +23,18 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
-                }
+                },
+                // Ekstra 3D transform sınıflarını güvenli listeye ekle
+                // JIT modu olmadığı için dinamik renkleri ve 3D dönüşleri tarayıcıya bildir
+                safelist: [
+                    'hover:shadow-red-500/50',
+                    'hover:shadow-indigo-500/50',
+                    'hover:shadow-blue-500/50',
+                    'hover:shadow-green-500/50',
+                    'hover:-translate-y-2',
+                    'hover:rotate-x-2',
+                    'hover:rotate-y-[-2deg]'
+                ]
             }
         }
     </script>
@@ -90,7 +101,7 @@
 </section>
 
     
-    <div id="kartlar" class="flex flex-wrap justify-center gap-8 p-8 min-h-screen">
+    <div id="kartlar" class="flex flex-wrap justify-center gap-8 p-8 min-h-screen" style="transform-style: preserve-3d; perspective: 1000px;">
     </div>
     
     <footer class="bg-gray-900 border-t border-gray-800 p-6 text-center text-gray-500">
@@ -163,7 +174,7 @@
         const cardHTML = `
             <div 
                 class="w-full sm:w-1/2 lg:w-1/4 p-6 rounded-lg flex flex-col gap-4 bg-gray-800 text-white 
-                shadow-2xl transition-all duration-300 hover:shadow-2xl hover:shadow-${post.color}-500/50 hover:-translate-y-2 hover:rotate-x-2 hover:rotate-y-[-2deg] relative" 
+                shadow-2xl relative" 
                 style="
                     /* Animasyon Stilini Kartın Kendisine Uygula */
                     animation: fadeInUp 0.5s ease-out forwards; 
@@ -196,15 +207,59 @@
     });
 
     // -------------------------------------------------------------------------------------
-    // 3. TIKLAMA OLAYI (Kartlar oluştuktan sonra eklenmeli - Düzeltildi)
+    // 3. TIKLAMA OLAYI (Dinamik Başlık Kaydetme)
     // -------------------------------------------------------------------------------------
     document.querySelectorAll('#kartlar a').forEach(link => {
         link.addEventListener('click', (e) => {
-            // Tıklanan linkin üstündeki h2 başlığını bul (en yakın .w-full kapsayıcısını arar)
+            // Tıklanan linkin üstündeki h2 başlığını bul
             const cardTitle = link.closest('.w-full').querySelector('h2').textContent.replace('BLOG: ', '').trim();
-            
-            // Başlığı geçici olarak kaydet
             localStorage.setItem('currentPostTitle', cardTitle);
+        });
+    });
+
+    // -------------------------------------------------------------------------------------
+    // 4. GELİŞMİŞ EFEKT: MOUSE TAKİPLİ 3D TILT
+    // -------------------------------------------------------------------------------------
+    document.querySelectorAll('#kartlar .w-full').forEach(card => {
+        
+        const rect = card.getBoundingClientRect(); // Başlangıç pozisyonunu bir kez al
+
+        // Mouse kartın üzerine girdiğinde olay dinleyicisini tanımla
+        card.addEventListener('mousemove', (e) => {
+            
+            // 1. Kartın pozisyonunu ve boyutlarını al (mouse move içinde güncel kalması için)
+            const rect = card.getBoundingClientRect();
+            
+            // 2. Mouse'un kart içindeki X ve Y koordinatlarını hesapla
+            const x = e.clientX - rect.left; 
+            const y = e.clientY - rect.top; 
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // 3. Mouse'un merkeze olan uzaklığını ve açısını hesapla
+            const rotateY = (x - centerX) / centerX * 6; // Max 6 derece Y ekseninde döndür
+            const rotateX = (centerY - y) / centerY * 6; // Max 6 derece X ekseninde döndür
+
+            // 4. CSS Transform stilini uygula (3D perspektif korunarak)
+            card.style.transform = `
+                perspective(1000px) 
+                scale(1.03) /* Hafifçe büyüt */
+                rotateX(${rotateX}deg) 
+                rotateY(${rotateY}deg)
+                translateZ(20px) /* Kartı öne çıkar */
+            `;
+        });
+
+        // Mouse karttan ayrıldığında eski haline döndür
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) scale(1) rotateX(0) rotateY(0) translateZ(0)';
+            card.style.transition = 'transform 0.5s ease'; // Geri dönüşü yumuşat
+        });
+        
+        // Mouse tekrar girdiğinde yumuşak geçişi kapat ki hareket keskinleşsin
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'transform 0s';
         });
     });
 

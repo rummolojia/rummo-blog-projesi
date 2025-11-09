@@ -18,7 +18,7 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
-                }
+                },
             }
         }
     </script>
@@ -67,12 +67,14 @@
             </p>
 
             <pre class="bg-gray-800 p-4 rounded-lg text-sm text-gray-200 overflow-x-auto"><code>
-.hover\\:rotate-x-2.hover\\:rotate-y-\\[-2deg\\] {
-    /* Basitleştirilmiş Tailwind kodları */
-    --tw-rotate-x: 2deg;
-    --tw-rotate-y: -2deg;
-    transform: perspective(1000px) rotateX(var(--tw-rotate-x)) rotateY(var(--tw-rotate-y));
-}
+/* Mouse Takibi ile Dinamik 3D Tilt */
+card.style.transform = `
+    perspective(1000px) 
+    scale(1.03) 
+    rotateX(4deg) /* Mouse Pozisyonuna Göre Değişir */
+    rotateY(4deg)
+    translateZ(20px) 
+`;
                 </code></pre>
 
             <p>
@@ -90,7 +92,6 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const closeButton = document.getElementById('close-menu');
         
-        // index.html'den kopyaladığınız mobil menü kodlarını buraya yapıştırın
         document.querySelector('header button.md\\:hidden').addEventListener('click', () => {
             mobileMenu.classList.remove('-translate-x-full');
         });
@@ -105,34 +106,27 @@
             });
         });
 
-
-        // post.html içerisindeki <script> bloğu
-// ... (mobil menü kodları burada) ...
-
-// 1. Kaydedilen Başlığı Yükleme
-document.addEventListener('DOMContentLoaded', () => {
-    const title = localStorage.getItem('currentPostTitle');
-    
-    if (title) {
-        // Tarayıcı sekmesini güncelle
-        document.title = title + ' | Rummo Blog';
-        
-        // Yazı başlığını (<h1>) güncelle
-        const postHeading = document.querySelector('.prose h1');
-        if (postHeading) {
-            postHeading.textContent = title;
-        }
-    } else {
-        // Başlık bulunamazsa varsayılan başlığı kullan
-        document.title = 'Yazı Detayları | Rummo Blog';
-    }
-    
-    // İşimiz bitti, saklanan veriyi sil
-    localStorage.removeItem('currentPostTitle');
-});
-
-
-        
+        // Kaydedilen Başlığı Yükleme
+        document.addEventListener('DOMContentLoaded', () => {
+            const title = localStorage.getItem('currentPostTitle');
+            
+            if (title) {
+                // Tarayıcı sekmesini güncelle
+                document.title = title + ' | Rummo Blog';
+                
+                // Yazı başlığını (<h1>) güncelle
+                const postHeading = document.querySelector('.prose h1');
+                if (postHeading) {
+                    postHeading.textContent = title;
+                }
+            } else {
+                // Başlık bulunamazsa varsayılan başlığı kullan
+                document.title = 'Yazı Detayları | Rummo Blog';
+            }
+            
+            // İşimiz bitti, saklanan veriyi sil
+            localStorage.removeItem('currentPostTitle');
+        });
     </script>
     
 </body>
