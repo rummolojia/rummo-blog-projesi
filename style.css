@@ -4,7 +4,7 @@ html {
 }
 
 /* ---------------------------------------------------- */
-/* 1. Hero Section (Aşağıdan Kayarak Belirme) Animasyonu */
+/* 1. Hero Section ve Kartlar İçin Giriş Animasyonu */
 /* ---------------------------------------------------- */
 
 @keyframes fadeInUp {
@@ -27,7 +27,7 @@ html {
 
 
 /* ---------------------------------------------------- */
-/* 2. Holografik Hover (Glitch'siz, Sadece Parlama) Efekti */
+/* 2. Holografik Hover (Glitch) Efekti */
 /* ---------------------------------------------------- */
 
 .glitch-link {
@@ -37,12 +37,10 @@ html {
     transition: color 0.3s; /* Renk geçişini yumuşat */
 }
 
-/* Üzerine Gelince Ana Metnin Rengi */
 .glitch-link:hover {
-    color: #1e3a8a; /* Fare gelince koyu mavi (daha profesyonel) */
+    color: #1e3a8a; 
 }
 
-/* Sahte Elementler Oluşturma */
 .glitch-link::before,
 .glitch-link::after {
     content: attr(data-text);
@@ -51,26 +49,22 @@ html {
     width: 100%;
     height: 100%;
     transition: opacity 0.3s;
-    opacity: 0; /* Varsayılan olarak görünmez */
+    opacity: 0; 
 }
 
-/* ::before (Kırmızı Kanal) - 1px Kaydırma */
 .glitch-link::before {
     left: 1px;
     text-shadow: -1px 0 red;
-    clip-path: inset(0 50% 0 0); /* Metnin yarısını göster */
+    clip-path: inset(0 50% 0 0); 
 }
 
-/* ::after (Mavi Kanal) - 1px Kaydırma */
 .glitch-link::after {
     left: -1px;
     text-shadow: 1px 0 blue;
-    clip-path: inset(0 0 0 50%); /* Metnin diğer yarısını göster */
+    clip-path: inset(0 0 0 50%); 
 }
 
-/* Hover Durumu: Efekti Görünür Yapma (Titreme yok, sadece parlatma) */
 .glitch-link:hover::before,
 .glitch-link:hover::after {
     opacity: 1;
-    /* Glitch titreşimi artık yok. Sadece yumuşak bir parlama kalıyor. */
 }

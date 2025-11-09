@@ -99,55 +99,102 @@
 
 
 <script>
-  const mobileMenu = document.getElementById('mobile-menu');
-  const closeButton = document.getElementById('close-menu');
+    // Mobil Menü JS Kodu
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeButton = document.getElementById('close-menu');
 
-  // Mobil Menü Fonksiyonları
-  document.querySelector('header button.md\\:hidden').addEventListener('click', () => {
-    mobileMenu.classList.remove('-translate-x-full');
-  });
-  // ... (Diğer mobil menü kodları) ...
+    document.querySelector('header button.md\\:hidden').addEventListener('click', () => {
+        mobileMenu.classList.remove('-translate-x-full');
+    });
 
-  // 1. Veri Kaynağı: Blog yazılarımız (BU KISIM EKLENMELİ)
-  const blogPosts = [
-    {
-      title: "Tailwind CSS ve 3D Tasarım",
-      excerpt: "Sıfırdan modern bir koyu tema ve 3D derinlik algısı nasıl oluşturulur?",
-      buttonText: "GÖRÜNTÜLE",
-      color: "red",
-      imageUrl: "https://source.unsplash.com/random/400x225/?dark,abstract" 
-    },
-        // ... (Diğer blog postları) ...
+    closeButton.addEventListener('click', () => {
+        mobileMenu.classList.add('-translate-x-full');
+    });
+    
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('-translate-x-full');
+        });
+    });
+
+    // -------------------------------------------------------------------------------------
+    // 1. VERİ KAYNAĞI: 4 KARTLI BLOG POSTS DİZİSİ
+    // -------------------------------------------------------------------------------------
+    const blogPosts = [
         {
-      title: "Inter Font Entegrasyonu",
-      excerpt: "Google Fonts'tan modern bir fontu Tailwind ile ana font yapma.",
-      buttonText: "OKU",
-      color: "green",
-      imageUrl: "https://source.unsplash.com/random/400x225/?tech,pattern" 
-    }
-  ];
+            title: "Tailwind CSS ve 3D Tasarım",
+            excerpt: "Sıfırdan modern bir koyu tema ve 3D derinlik algısı nasıl oluşturulur?",
+            buttonText: "GÖRÜNTÜLE",
+            color: "red",
+            imageUrl: "https://source.unsplash.com/random/400x225/?dark,abstract" 
+        },
+        {
+            title: "JavaScript ile Mobil Menü",
+            excerpt: "Basit JS ile şık açılır-kapanır mobil menü (drawer) yapımı.",
+            buttonText: "DEVAM",
+            color: "indigo",
+            imageUrl: "https://source.unsplash.com/random/400x225/?coding,neon" 
+        },
+        {
+            title: "Favicon ve OG Meta Etiketleri",
+            excerpt: "Sitenizin tarayıcı ve sosyal medya paylaşımlarında şık görünmesi.",
+            buttonText: "BAŞARILI",
+            color: "blue",
+            imageUrl: "https://source.unsplash.com/random/400x225/?ui,glitch" 
+        },
+        {
+            title: "Inter Font Entegrasyonu",
+            excerpt: "Google Fonts'tan modern bir fontu Tailwind ile ana font yapma.",
+            buttonText: "OKU",
+            color: "green",
+            imageUrl: "https://source.unsplash.com/random/400x225/?tech,pattern" 
+        }
+    ];
 
-  const kartlarContainer = document.getElementById('kartlar');
+    const kartlarContainer = document.getElementById('kartlar');
 
-  // 2. Her bir yazı için kart oluşturma (BU KISIM EKLENMELİ)
-  blogPosts.forEach(post => {
-    const cardHTML = `
-      <div class="w-full sm:w-1/2 lg:w-1/4 p-6 rounded-lg flex flex-col gap-4 bg-gray-800 text-white shadow-2xl transition-all duration-300 hover:shadow-2xl hover:shadow-${post.color}-500/50 hover:-translate-y-2">
-        <img src="${post.imageUrl}" alt="${post.title} görseli" class="h-40 w-full object-cover rounded-xl" />
-        <div class="flex flex-col gap-2">
-          <h2 class="text-xl font-bold">BLOG: ${post.title}</h2>
-          <p class="text-gray-400 text-sm">
-            ${post.excerpt}
-          </p>
-        </div>
-        <button class="w-full py-3 bg-${post.color}-600 text-white rounded-xl font-medium shadow-lg hover:bg-${post.color}-700 transition duration-300">
-          ${post.buttonText}
-        </button>
-      </div>
-    `;
-    // Oluşturulan kart HTML'ini kapsayıcıya ekle
-    kartlarContainer.innerHTML += cardHTML;
-  });
+    // -------------------------------------------------------------------------------------
+    // 2. KART OLUŞTURMA: ANIMASYON, 3D EFKET VE POST.HTML LİNKİ
+    // -------------------------------------------------------------------------------------
+    blogPosts.forEach((post, index) => { 
+        
+        const delay = index * 0.15; // Gecikme süresi hesaplandı (0.15s aralıklarla)
+        
+        // **ÖNEMLİ:** Buradaki tırnaklar `backtick` tırnağıdır (`)
+        const cardHTML = `
+            <div 
+                class="w-full sm:w-1/2 lg:w-1/4 p-6 rounded-lg flex flex-col gap-4 bg-gray-800 text-white 
+                shadow-2xl transition-all duration-300 hover:shadow-2xl hover:shadow-${post.color}-500/50 hover:-translate-y-2 hover:rotate-x-2 hover:rotate-y-[-2deg] relative" 
+                style="
+                    /* Animasyon Stilini Kartın Kendisine Uygula */
+                    animation: fadeInUp 0.5s ease-out forwards; 
+                    opacity: 0; 
+                    animation-delay: ${delay}s;
+                    /* 3D Görünüm İçin Gerekli */
+                    transform-style: preserve-3d;
+                    transform: perspective(1000px);
+                "
+            >
+                <a href="post.html" class="absolute inset-0 z-0 rounded-lg"></a> 
+
+                <img src="${post.imageUrl}" alt="${post.title} görseli" class="h-40 w-full object-cover rounded-xl" />
+                <div class="flex flex-col gap-2">
+                    <h2 class="text-xl font-bold">BLOG: ${post.title}</h2>
+                    <p class="text-gray-400 text-sm">
+                        ${post.excerpt}
+                    </p>
+                </div>
+                <a href="post.html" class="block mt-auto z-10 relative">
+                    <button class="w-full py-3 bg-${post.color}-600 text-white rounded-xl font-medium shadow-lg hover:bg-${post.color}-700 transition duration-300">
+                        ${post.buttonText}
+                    </button>
+                </a>
+            </div>
+        `;
+
+        // Oluşturulan kart HTML'ini kapsayıcıya ekle
+        kartlarContainer.innerHTML += cardHTML;
+    });
 </script>
 </body>
 </html>
