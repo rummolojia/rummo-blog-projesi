@@ -69,9 +69,8 @@ html {
 /* 6. Hover Durumu: Efekti Görünür Yapma */
 .glitch-link:hover::before,
 .glitch-link:hover::after {
-    opacity: 1; /* Sahte elementleri görünür yap */
-    /* Bu kısımda ek bir kayma animasyonu da eklenebilir. */
-    animation: glitch 0.3s infinite alternate; /* Hızlı, sonsuz animasyon */
+    opacity: 1;
+    animation: glitch 0.5s 1; /* Animasyonu 0.5 saniye çalıştır ve bitir (tek atım) */
 }
 
 /* 7. Glitch Animasyon Kuralı (Metinleri rastgele kaydırma) */
