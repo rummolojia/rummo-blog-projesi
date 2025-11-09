@@ -251,11 +251,27 @@
             `;
         });
 
+        // -------------------------------------------------------------------------------------
+    // 4. GELİŞMİŞ EFEKT: MOUSE TAKİPLİ 3D TILT
+    // -------------------------------------------------------------------------------------
+    document.querySelectorAll('#kartlar .w-full').forEach(card => {
+        
+        // Mouse kartın üzerine girdiğinde olay dinleyicisini tanımla
+        card.addEventListener('mousemove', (e) => {
+            // ... (bu kısım aynı kalacak) ...
+        });
+
         // Mouse karttan ayrıldığında eski haline döndür
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'perspective(1000px) scale(1) rotateX(0) rotateY(0) translateZ(0)';
-            card.style.transition = 'transform 0.5s ease'; // Geri dönüşü yumuşat
+            card.style.transition = 'transform 0.5s ease'; // Geri dönüşü yumuşat (Şimdi çalışacak)
         });
+        
+        // Mouse tekrar girdiğinde yumuşak geçişi kapat ki hareket keskinleşsin
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'transform 0s'; // <-- Bu satır garantiyi sağlıyor
+        });
+    });
         
         // Mouse tekrar girdiğinde yumuşak geçişi kapat ki hareket keskinleşsin
         card.addEventListener('mouseenter', () => {
