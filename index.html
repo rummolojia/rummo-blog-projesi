@@ -157,6 +157,17 @@
     // 2. KART OLUŞTURMA: ANIMASYON, 3D EFKET VE POST.HTML LİNKİ
     // -------------------------------------------------------------------------------------
     blogPosts.forEach((post, index) => { 
+
+        // 3. Tıklama Olayı: Kart başlığını kaydetme
+    document.querySelectorAll('#kartlar a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        // Tıklanan linkin üstündeki h2 başlığını bul
+        const cardTitle = link.closest('.w-full').querySelector('h2').textContent.replace('BLOG: ', '').trim();
+        
+        // Başlığı geçici olarak kaydet
+        localStorage.setItem('currentPostTitle', cardTitle);
+        });
+        });
         
         const delay = index * 0.15; // Gecikme süresi hesaplandı (0.15s aralıklarla)
         

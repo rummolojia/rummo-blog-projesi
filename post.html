@@ -104,6 +104,34 @@
                 mobileMenu.classList.add('-translate-x-full');
             });
         });
+
+
+        // post.html içerisindeki <script> bloğu
+// ... (mobil menü kodları burada) ...
+
+// 1. Kaydedilen Başlığı Yükleme
+document.addEventListener('DOMContentLoaded', () => {
+    const title = localStorage.getItem('currentPostTitle');
+    
+    if (title) {
+        // Tarayıcı sekmesini güncelle
+        document.title = title + ' | Rummo Blog';
+        
+        // Yazı başlığını (<h1>) güncelle
+        const postHeading = document.querySelector('.prose h1');
+        if (postHeading) {
+            postHeading.textContent = title;
+        }
+    } else {
+        // Başlık bulunamazsa varsayılan başlığı kullan
+        document.title = 'Yazı Detayları | Rummo Blog';
+    }
+    
+    // İşimiz bitti, saklanan veriyi sil
+    localStorage.removeItem('currentPostTitle');
+});
+
+
         
     </script>
     
