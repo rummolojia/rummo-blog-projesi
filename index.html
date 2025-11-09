@@ -25,7 +25,6 @@
                     },
                 },
                 // Ekstra 3D transform sınıflarını güvenli listeye ekle
-                // JIT modu olmadığı için dinamik renkleri ve 3D dönüşleri tarayıcıya bildir
                 safelist: [
                     'hover:shadow-red-500/50',
                     'hover:shadow-indigo-500/50',
@@ -218,16 +217,16 @@
     });
 
     // -------------------------------------------------------------------------------------
-    // 4. GELİŞMİŞ EFEKT: MOUSE TAKİPLİ 3D TILT
+    // 4. GELİŞMİŞ EFEKT: MOUSE TAKİPLİ 3D TILT (NİHAİ DÜZELTME)
     // -------------------------------------------------------------------------------------
     document.querySelectorAll('#kartlar .w-full').forEach(card => {
         
-        const rect = card.getBoundingClientRect(); // Başlangıç pozisyonunu bir kez al
-
         // Mouse kartın üzerine girdiğinde olay dinleyicisini tanımla
         card.addEventListener('mousemove', (e) => {
             
-            // 1. Kartın pozisyonunu ve boyutlarını al (mouse move içinde güncel kalması için)
+            // Mouse hareketi sırasında anlık tepkiyi garantilemek için geçişi sıfırla
+            card.style.transition = 'transform 0s'; 
+
             const rect = card.getBoundingClientRect();
             
             // 2. Mouse'un kart içindeki X ve Y koordinatlarını hesapla
@@ -251,32 +250,18 @@
             `;
         });
 
-        // -------------------------------------------------------------------------------------
-    // 4. GELİŞMİŞ EFEKT: MOUSE TAKİPLİ 3D TILT
-    // -------------------------------------------------------------------------------------
-    document.querySelectorAll('#kartlar .w-full').forEach(card => {
-        
-        // Mouse kartın üzerine girdiğinde olay dinleyicisini tanımla
-        card.addEventListener('mousemove', (e) => {
-            // ... (bu kısım aynı kalacak) ...
-        });
-
-        // Mouse karttan ayrıldığında eski haline döndür
+        // Mouse karttan ayrıldığında eski haline döndür (ve Geri dönüş için yumuşak geçiş ekle)
         card.addEventListener('mouseleave', () => {
+            card.style.transition = 'transform 0.5s ease'; // Geri dönüş yumuşak olsun
             card.style.transform = 'perspective(1000px) scale(1) rotateX(0) rotateY(0) translateZ(0)';
-            card.style.transition = 'transform 0.5s ease'; // Geri dönüşü yumuşat (Şimdi çalışacak)
         });
         
-        // Mouse tekrar girdiğinde yumuşak geçişi kapat ki hareket keskinleşsin
+        // Bu bloğa artık ihtiyacımız yoktu:
+        /*
         card.addEventListener('mouseenter', () => {
-            card.style.transition = 'transform 0s'; // <-- Bu satır garantiyi sağlıyor
+            card.style.transition = 'transform 0s'; 
         });
-    });
-        
-        // Mouse tekrar girdiğinde yumuşak geçişi kapat ki hareket keskinleşsin
-        card.addEventListener('mouseenter', () => {
-            card.style.transition = 'transform 0s';
-        });
+        */
     });
 
 </script>
