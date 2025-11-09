@@ -21,3 +21,65 @@ html {
     animation-fill-mode: both; /* Animasyon bitince son durumda kal */
     opacity: 0; /* Varsayılan olarak görünmez kalsın (HTML'de) */
 }
+
+
+/* --- Glitch Hover Efekti için Yeni CSS --- */
+
+/* 1. Temel Stil: Üzerine gelince metni gizler ve pozisyonu ayarlar */
+.glitch-link {
+    position: relative;
+    display: inline-block;
+    color: #1f2937; /* Varsayılan koyu renk */
+    transition: color 0.3s;
+}
+
+/* 2. Üzerine Gelince Ana Metnin Rengi */
+.glitch-link:hover {
+    color: #ef4444; /* Fare gelince kırmızı (veya istediğiniz renk) */
+}
+
+/* 3. Sahte Elementler Oluşturma (Glitch Etkisinin Temeli) */
+.glitch-link::before,
+.glitch-link::after {
+    content: attr(data-text); /* HTML'deki 'data-text' özelliğini kopyala */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s;
+}
+
+/* 4. ::before (İlk Kopya) - Kırmızı Kanal */
+.glitch-link::before {
+    left: 2px; /* Biraz sağa kaydır */
+    text-shadow: -1px 0 red; /* Kırmızı gölge ekle */
+    clip-path: inset(0 50% 0 0); /* Metnin yarısını göster */
+    opacity: 0;
+}
+
+/* 5. ::after (İkinci Kopya) - Mavi Kanal */
+.glitch-link::after {
+    left: -2px; /* Biraz sola kaydır */
+    text-shadow: 1px 0 blue; /* Mavi gölge ekle */
+    clip-path: inset(0 0 0 50%); /* Metnin diğer yarısını göster */
+    opacity: 0;
+}
+
+/* 6. Hover Durumu: Efekti Görünür Yapma */
+.glitch-link:hover::before,
+.glitch-link:hover::after {
+    opacity: 1; /* Sahte elementleri görünür yap */
+    /* Bu kısımda ek bir kayma animasyonu da eklenebilir. */
+    animation: glitch 0.3s infinite alternate; /* Hızlı, sonsuz animasyon */
+}
+
+/* 7. Glitch Animasyon Kuralı (Metinleri rastgele kaydırma) */
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
