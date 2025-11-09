@@ -1,6 +1,8 @@
+/* style.css (Nihai Düzeltilmiş Sürüm) */
+
 /* Genel Ayarlar */
 html {
-    scroll-behavior: smooth; /* Sayfada yumuşak kaydırma */
+    scroll-behavior: smooth; 
 }
 
 /* ---------------------------------------------------- */
@@ -10,11 +12,11 @@ html {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translate3d(0, 40px, 0); /* 40 piksel aşağıda başla */
+        transform: translate3d(0, 40px, 0); 
     }
     to {
         opacity: 1;
-        transform: translate3d(0, 0, 0); /* Orijinal yerine kay */
+        transform: translate3d(0, 0, 0); 
     }
 }
 
@@ -27,18 +29,18 @@ html {
 
 
 /* ---------------------------------------------------- */
-/* 2. Holografik Hover (Glitch) Efekti */
+/* 2. Holografik Hover (Glitch) Efekti (Menü Linkleri) */
 /* ---------------------------------------------------- */
 
 .glitch-link {
     position: relative;
     display: inline-block;
-    color: #1f2937; /* Varsayılan koyu renk */
-    transition: color 0.3s; /* Renk geçişini yumuşat */
+    color: #9ca3af; 
+    transition: color 0.3s;
 }
 
 .glitch-link:hover {
-    color: #1e3a8a; 
+    color: #ef4444; 
 }
 
 .glitch-link::before,
@@ -67,4 +69,45 @@ html {
 .glitch-link:hover::before,
 .glitch-link:hover::after {
     opacity: 1;
+}
+
+/* ---------------------------------------------------- */
+/* 3. KARTLAR İÇİN NEON GÖLGE VE 3D GEÇİŞ EFEKTİ (Basitleştirilmiş) */
+/* ---------------------------------------------------- */
+
+.w-full {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Kırmızı (Red) kartlar için varsayılan ve Red butonu hedefleme */
+.w-full:hover,
+.w-full:hover [class*="bg-red-"] {
+    box-shadow: 
+        0 20px 25px -5px rgba(0, 0, 0, 0.5), /* Shadow-2xl */
+        0 8px 10px -6px rgba(0, 0, 0, 0.5), /* Shadow-2xl */
+        0 0 40px rgba(239, 68, 68, 0.5); /* Kırmızı Neon */ 
+}
+
+/* Yeşil (Green) kartlar için özel parlama */
+.w-full:hover [class*="bg-green-"] {
+    box-shadow: 
+        0 20px 25px -5px rgba(0, 0, 0, 0.5),
+        0 8px 10px -6px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(34, 197, 94, 0.5); /* Yeşil Neon */
+}
+
+/* Lacivert (Indigo) kartlar için özel parlama */
+.w-full:hover [class*="bg-indigo-"] {
+    box-shadow: 
+        0 20px 25px -5px rgba(0, 0, 0, 0.5),
+        0 8px 10px -6px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(99, 102, 241, 0.5); /* Indigo Neon */
+}
+
+/* Mavi (Blue) kartlar için özel parlama */
+.w-full:hover [class*="bg-blue-"] {
+    box-shadow: 
+        0 20px 25px -5px rgba(0, 0, 0, 0.5),
+        0 8px 10px -6px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(59, 130, 246, 0.5); /* Mavi Neon */
 }
