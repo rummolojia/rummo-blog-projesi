@@ -3,48 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rummo Blog Kartları</title>
+    <title>Rummo Blog Kartları - Dark Mode</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-gray-100">
-
-    <header class="bg-white shadow-md p-4 flex justify-between items-center">
+<body class="bg-gray-900 text-gray-200">
     
-    <a href="#" class="text-2xl font-bold text-gray-900">
+    <header class="bg-gray-800 shadow-xl p-4 flex justify-between items-center sticky top-0 z-10">
+    
+    <a href="#" class="text-2xl font-bold text-white">
         Rummo Blog
     </a>
 
     <nav class="hidden md:flex space-x-6">
-        
-        <a href="#" class="glitch-link text-gray-600 hover:text-blue-600 font-medium" data-text="Anasayfa">Anasayfa</a>
-        <a href="#" class="glitch-link text-gray-600 hover:text-blue-600 font-medium" data-text="Blog">Blog</a>
-        <a href="#" class="glitch-link text-gray-600 hover:text-blue-600 font-medium" data-text="Hakkında">Hakkında</a>
-        <a href="#" class="glitch-link text-white py-2 px-4 bg-blue-600 rounded-lg hover:bg-blue-700 transition">İletişim</a>
+
+        <a href="#" class="glitch-link text-gray-400 hover:text-red-500 font-medium" data-text="Anasayfa">Anasayfa</a>
+        <a href="#" class="glitch-link text-gray-400 hover:text-red-500 font-medium" data-text="Blog">Blog</a>
+        <a href="#" class="glitch-link text-gray-400 hover:text-red-500 font-medium" data-text="Hakkında">Hakkında</a>
+        <a href="#" class="glitch-link text-white py-2 px-4 bg-blue-600 rounded-lg hover:bg-blue-700 transition" data-text="İletişim">İletişim</a>
         
     </nav>
     
-    <button class="md:hidden p-2 text-gray-600 hover:text-blue-600">
-
+    <button class="md:hidden p-2 text-gray-400 hover:text-red-500">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
     </svg>
-        
     </button>
 </header>
 
 
-    <section class="bg-white py-16 px-8 sm:py-24 text-center">
+    <section class="bg-gray-800 py-16 px-8 sm:py-24 text-center border-b border-gray-700">
     <div class="max-w-4xl mx-auto"> 
         
-        <h1 class="animate-fade-in-up text-4xl sm:text-6xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight">
-    Rummo Blog'a Hoş Geldiniz. <span class="text-blue-600">Öğrenme</span> Yolculuğunuz Başlasın.
+        <h1 class="animate-fade-in-up text-4xl sm:text-6xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+    Rummo Blog'a Hoş Geldiniz. <span class="text-blue-400">Öğrenme</span> Yolculuğunuz Başlasın.
         </h1>
-        <p class="animate-fade-in-up text-lg text-gray-600 mb-10 max-w-2xl mx-auto" style="animation-delay: 0.3s;">
+        <p class="animate-fade-in-up text-gray-400 text-lg mb-10 max-w-2xl mx-auto" style="animation-delay: 0.3s;">
     Gelişen teknolojileri, trendleri ve kodlama ipuçlarını tek bir yerden takip edin. Bilgi dolu yazılarımızla her gün kendinizi geliştirin.
         </p>
-        <a href="#kartlar" class="animate-fade-in-up inline-block py-3 px-8 text-lg bg-red-600 text-white font-semibold rounded-full shadow-lg hover:bg-red-700 transition duration-300" style="animation-delay: 0.6s;">
+        <a href="#kartlar" class="animate-fade-in-up inline-block py-3 px-8 text-lg bg-red-600 text-white font-semibold rounded-full shadow-2xl hover:bg-red-700 transition duration-300" style="animation-delay: 0.6s;">
     Hemen Blog Yazılarını Keşfet
         </a>
 
@@ -54,42 +52,46 @@
     
     <div id="kartlar" class="flex flex-wrap justify-center gap-8 p-8 min-h-screen">
         
-        <div class="w-full sm:w-1/2 lg:w-1/4 p-6 rounded-lg flex flex-col col-gap-4 bg-white shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-            <div class="h-40 bg-gray-300 rounded-xl"></div>
+        <div class="w-full sm:w-1/2 lg:w-1/4 p-6 rounded-lg flex flex-col gap-4 bg-gray-800 text-white shadow-2xl transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:-translate-y-2">
+            <div class="h-40 bg-gray-700 rounded-xl"></div>
             <div class="flex flex-col gap-2">
                 <h2 class="text-xl font-bold">KART 1: ANA BAŞLIK</h2>
-                <p class="text-gray-600 text-sm">
+                <p class="text-gray-400 text-sm">
                     Bu ilk kartımız. Responsive tasarıma geçiyoruz!
                 </p>
             </div>
-            <button class="w-full py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition duration-300">
+            <button class="w-full py-3 bg-blue-600 text-white rounded-xl font-medium shadow-lg hover:bg-blue-700 transition duration-300">
                 GÖRÜNTÜLE
             </button>
         </div>
-        <div class="w-full sm:w-1/2 lg:w-1/4 p-6 rounded-lg flex flex-col col-gap-4 bg-white shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-            <div class="h-40 bg-gray-300 rounded-xl"></div>
+        <div class="w-full sm:w-1/2 lg:w-1/4 p-6 rounded-lg flex flex-col gap-4 bg-gray-800 text-white shadow-2xl transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/50 hover:-translate-y-2">
+            <div class="h-40 bg-gray-700 rounded-xl"></div>
             <div class="flex flex-col gap-2">
                 <h2 class="text-xl font-bold">KART 2: YENİ BÖLÜM</h2>
-                <p class="text-gray-600 text-sm">
+                <p class="text-gray-400 text-sm">
                     İç içe flexbox mantığını tamamen anladık.
                 </p>
             </div>
-            <button class="w-full py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition duration-300">
+            <button class="w-full py-3 bg-indigo-600 text-white rounded-xl font-medium shadow-lg hover:bg-indigo-700 transition duration-300">
                 DEVAM
             </button>
         </div>
-        <div class="w-full sm:w-1/2 lg:w-1/4 p-6 rounded-lg flex flex-col col-gap-4 bg-white shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-            <div class="h-40 bg-gray-300 rounded-xl"></div>
+        <div class="w-full sm:w-1/2 lg:w-1/4 p-6 rounded-lg flex flex-col gap-4 bg-gray-800 text-white shadow-2xl transition-all duration-300 hover:shadow-2xl hover:shadow-red-600/50 hover:-translate-y-2">
+            <div class="h-40 bg-gray-700 rounded-xl"></div>
             <div class="flex flex-col gap-2">
                 <h2 class="text-xl font-bold">KART 3: SON ADIM</h2>
-                <p class="text-gray-600 text-sm">
+                <p class="text-gray-400 text-sm">
                     Bu, Hafta 2'de yapacağınız ilk büyük adımdır!
                 </p>
             </div>
-            <button class="w-full py-3 bg-red-600 text-white rounded-xl font-medium hover:bg-red-700 transition duration-300">
+            <button class="w-full py-3 bg-red-600 text-white rounded-xl font-medium shadow-lg hover:bg-red-700 transition duration-300">
                 BAŞARILI
             </button>
         </div>
-        </div>
+    </div>
+    
+    <footer class="bg-gray-900 border-t border-gray-800 p-6 text-center text-gray-500">
+        <p>&copy; 2025 Rummo Blog. Tüm Hakları Saklıdır. | rummolojia UI/UX Engineer</p>
+    </footer>
 </body>
 </html>
