@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // -------------------------------------------------------------------------------------
-    // 3. VERİ KAYNAĞI ve KART OLUŞTURMA... (Mevcut kodunuz buradan devam edecek)
+    // 3. VERİ KAYNAĞI ve KART OLUŞTURMA... (Mevcut kod buradan devam edecek)
     // -------------------------------------------------------------------------------------
 
 
@@ -63,7 +63,24 @@ document.addEventListener("DOMContentLoaded", function() {
         { title: "Tailwind CSS ve 3D Tasarım", excerpt: "Sıfırdan modern bir koyu tema ve 3D derinlik algısı nasıl oluşturulur?", buttonText: "GÖRÜNTÜLE", color: "red", imageUrl: "https://source.unsplash.com/random/400x225/?dark,abstract" },
         { title: "JavaScript ile Mobil Menü", excerpt: "Basit JS ile şık açılır-kapanır mobil menü (drawer) yapımı.", buttonText: "DEVAM", color: "indigo", imageUrl: "https://source.unsplash.com/random/400x225/?coding,neon" },
         { title: "Favicon ve OG Meta Etiketleri", excerpt: "Sitenizin tarayıcı ve sosyal medya paylaşımlarında şık görünmesi.", buttonText: "BAŞARILI", color: "blue", imageUrl: "https://source.unsplash.com/random/400x225/?ui,glitch" },
-        { title: "Inter Font Entegrasyonu", excerpt: "Google Fonts'tan modern bir fontu Tailwind ile ana font yapma.", buttonText: "OKU", color: "green", imageUrl: "https://source.unsplash.com/random/400x225/?tech,pattern" }
+        { title: "Inter Font Entegrasyonu", excerpt: "Google Fonts'tan modern bir fontu Tailwind ile ana font yapma.", buttonText: "OKU", color: "green", imageUrl: "https://source.unsplash.com/random/400x225/?tech,pattern" },
+
+        { 
+        title: "Web Performansı Optimizasyonu", 
+        excerpt: "Sitenizin yüklenme hızını artıracak kritik CSS ve JS teknikleri.", 
+        buttonText: "HIZLANDIR", 
+        color: "yellow", // Yeni renk (Tailwind destekli)
+        imageUrl: "https://source.unsplash.com/random/400x225/?performance,speed,code" 
+    },
+    // ----------- 6. YENİ KART -----------
+    { 
+        title: "Responsive Tasarımın Temelleri", 
+        excerpt: "Farklı ekran boyutlarına uyum sağlayan esnek grid yapıları oluşturma.", 
+        buttonText: "ÖĞREN", 
+        color: "purple", // Yeni renk (Tailwind destekli)
+        imageUrl: "https://source.unsplash.com/random/400x225/?responsive,ui,layout" 
+    }
+
     ];
 
     const kartlarContainer = document.getElementById('kartlar');

@@ -1,4 +1,4 @@
-/* style.css (NİHAİ TEMİZ VERSİYON) */
+/* style.css (TEMİZ VERSİYON) */
 
 /* Genel Ayarlar */
 html {
@@ -109,7 +109,23 @@ html {
 }
 
 
-/* style.css dosyasının en altına ekleyin */
+/* Sarı (Yellow) kartlar için özel parlama */
+.w-full:hover [class*="bg-yellow-"] {
+    box-shadow: 
+        0 20px 25px -5px rgba(0, 0, 0, 0.5),
+        0 8px 10px -6px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(250, 204, 21, 0.5); /* Sarı Neon (Tailwind yellow-400/500 rengine yakın) */
+}
+
+/* Mor (Purple) kartlar için özel parlama */
+.w-full:hover [class*="bg-purple-"] {
+    box-shadow: 
+        0 20px 25px -5px rgba(0, 0, 0, 0.5),
+        0 8px 10px -6px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(168, 85, 247, 0.5); /* Mor Neon (Tailwind purple-500 rengine yakın) */
+}
+
+
 
 /* ---------------------------------------------------- */
 /* 4. CHRONICLE HQ BENZERİ İNTERAKTİF PARLAKLIK EFEKTİ */
@@ -146,7 +162,7 @@ html {
     opacity: 1;
 }
 
-/* Metnin kendisinin parlamasını sağlayabiliriz (isteğe bağlı) */
+/* Metnin kendisinin parlamasını sağlanabilir (isteğe bağlı) */
 .interactive-glow:hover {
     text-shadow: 0 0 10px rgba(59, 130, 246, 0.7); 
 }
