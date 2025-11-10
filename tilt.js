@@ -1,5 +1,5 @@
 // tilt.js
-// NİHAİ TEMİZ VERSİYON: Sadece zorunlu JS fonksiyonlarını içerir.
+// NİHAİ TEMİZ VERSİYON: Vanilla Tilt kütüphanesi ile uyumlu.
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -9,17 +9,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const mobileMenu = document.getElementById('mobile-menu');
     const closeButton = document.getElementById('close-menu');
 
-    // Açma butonu
     document.querySelector('header button.md\\:hidden').addEventListener('click', () => {
         mobileMenu.classList.remove('-translate-x-full');
     });
 
-    // Kapatma butonu
     closeButton.addEventListener('click', () => {
         mobileMenu.classList.add('-translate-x-full');
     });
     
-    // Linklere tıklayınca menüyü kapat
     document.querySelectorAll('#mobile-menu a').forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('-translate-x-full');
@@ -46,14 +43,19 @@ document.addEventListener("DOMContentLoaded", function() {
             <div 
                 class="w-full sm:w-1/2 lg:w-1/4 p-6 rounded-lg flex flex-col gap-4 bg-gray-800 text-white 
                 shadow-2xl relative
-                /* TILT ETKİSİ İÇİN TAILWIND SINIFLARI */
-                transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-2xl hover:z-20
+                transition-all duration-300 ease-in-out hover:z-20 /* Tailwind sınıfları */
                 " 
                 style="
                     animation: fadeInUp 0.5s ease-out forwards; 
                     opacity: 0; 
                     animation-delay: ${delay}s;
                 "
+                data-tilt 
+                data-tilt-max="10" 
+                data-tilt-speed="400" 
+                data-tilt-scale="1.05"
+                data-tilt-glare="true" 
+                data-tilt-max-glare="0.5"
             >
                 <a href="post.html" class="absolute inset-0 z-0 rounded-lg"></a> 
 
