@@ -23,6 +23,39 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+
+    // tilt.js dosyasının içinde, document.addEventListener("DOMContentLoaded", function() { ... }); bloğunun içinde
+
+// -------------------------------------------------------------------------------------
+// 1. MOBİL MENÜ JS KODU... (Devam ediyor)
+// -------------------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------------------
+    // 2. YENİ: CHRONICLE HQ BENZERİ İNTERAKTİF PARLAKLIK JS KODU
+    // -------------------------------------------------------------------------------------
+
+    const glowTextElement = document.getElementById('glow-text');
+
+    if (glowTextElement) {
+        // Fare hareketini dinle
+        glowTextElement.addEventListener('mousemove', (e) => {
+            const rect = glowTextElement.getBoundingClientRect();
+            // Fare konumunu elemente göre yüzde olarak hesapla
+            const x = (e.clientX - rect.left) / rect.width * 100; // Yüzde olarak X
+            const y = (e.clientY - rect.top) / rect.height * 100; // Yüzde olarak Y
+
+            // CSS değişkenlerini güncelle
+            glowTextElement.style.setProperty('--mouse-x', `${x}%`);
+            glowTextElement.style.setProperty('--mouse-y', `${y}%`);
+        });
+    }
+
+    // -------------------------------------------------------------------------------------
+    // 3. VERİ KAYNAĞI ve KART OLUŞTURMA... (Mevcut kodunuz buradan devam edecek)
+    // -------------------------------------------------------------------------------------
+
+
+
     // -------------------------------------------------------------------------------------
     // 2. VERİ KAYNAĞI ve KART OLUŞTURMA
     // -------------------------------------------------------------------------------------

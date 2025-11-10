@@ -107,3 +107,46 @@ html {
         0 8px 10px -6px rgba(0, 0, 0, 0.5),
         0 0 40px rgba(59, 130, 246, 0.5); /* Mavi Neon */
 }
+
+
+/* style.css dosyasının en altına ekleyin */
+
+/* ---------------------------------------------------- */
+/* 4. CHRONICLE HQ BENZERİ İNTERAKTİF PARLAKLIK EFEKTİ */
+/* ---------------------------------------------------- */
+
+.interactive-glow {
+    position: relative; 
+    display: inline-block; 
+    overflow: hidden; 
+    cursor: pointer; 
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+    transition: all 0.2s ease-out; 
+}
+
+/* Parlayan arka plan efekti */
+.interactive-glow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%; 
+    height: 200%; 
+    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.5) 0%, transparent 70%); 
+    transform: translate(var(--x, 0), var(--y, 0)); 
+    opacity: 0; 
+    transition: opacity 0.3s ease-out; 
+    pointer-events: none; 
+    z-index: -1; 
+}
+
+/* Fare üzerine geldiğinde parlaklığı göster */
+.interactive-glow:hover::before {
+    opacity: 1;
+}
+
+/* Metnin kendisinin parlamasını sağlayabiliriz (isteğe bağlı) */
+.interactive-glow:hover {
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.7); 
+}
